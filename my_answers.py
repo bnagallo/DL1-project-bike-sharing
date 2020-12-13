@@ -79,14 +79,14 @@ class NeuralNetwork(object):
 
         # print("*****DEBUG*****:X (forward_pass_train): ",X)
 
-        hidden_inputs = X.dot(self.weights_input_to_hidden) # signals into hidden layer
+        hidden_inputs = np.dot(X, self.weights_input_to_hidden) # signals into hidden layer
         hidden_outputs =  self.activation_function(hidden_inputs) # signals from hidden layer
 
         # print("*****DEBUG*****:hidden_inputs: ", hidden_inputs)
         # print("*****DEBUG*****:hidden_outputs: ", hidden_outputs)
 
         # TODO: Output layer - Replace these values with your calculations.
-        final_inputs = hidden_outputs.dot(self.weights_hidden_to_output) # signals into final output layer
+        final_inputs = np.dot(hidden_outputs,self.weights_hidden_to_output) # signals into final output layer
         final_outputs = final_inputs # signals from final output layer
 
         # print("*****DEBUG*****:final_outputs: ", final_outputs)
@@ -116,7 +116,7 @@ class NeuralNetwork(object):
         # print("*****DEBUG*****:output_error: ", output_error_term)
 
         # TODO: Calculate the hidden layer's contribution to the error
-        hidden_error = output_error_term.dot(self.weights_hidden_to_output.T)
+        hidden_error = np.dot(output_error_term,self.weights_hidden_to_output.T)
 
         # print("*****DEBUG*****:hidden_error: ", hidden_error)
         
@@ -152,12 +152,12 @@ class NeuralNetwork(object):
         
         #### Implement the forward pass here ####
         # TODO: Hidden layer - replace these values with the appropriate calculations.
-        hidden_inputs = features.dot(self.weights_input_to_hidden) # signals into hidden layer
+        hidden_inputs = np.dot(features, self.weights_input_to_hidden) # signals into hidden layer
         hidden_outputs = self.activation_function(hidden_inputs) # signals from hidden layer
 
         
         # TODO: Output layer - Replace these values with the appropriate calculations.
-        final_inputs = hidden_outputs.dot(self.weights_hidden_to_output) # signals into final output layer
+        final_inputs = np.dot(hidden_outputs,self.weights_hidden_to_output) # signals into final output layer
         final_outputs = final_inputs # signals from final output layer 
         
         # print("*****DEBUG*****:RUN final outputs: ",  final_outputs)
@@ -168,7 +168,7 @@ class NeuralNetwork(object):
 #########################################################
 # Set your hyperparameters here
 ##########################################################
-iterations = 5000
-learning_rate = 0.001
-hidden_nodes = 5
-output_nodes = 1
+iterations = 20000
+learning_rate = 0.01
+hidden_nodes = 50
+output_nodes = 50
